@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+{% extends 'Profile/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+
+{% block body_block %}
+
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-12 col-lg-12 col-xl-12 theiaStickySidebar">
+<div class="profile-sidebar">
+<div class="widget-profile pro-widget-content">
+<div class="profile-info-widget">
+<a href="#" class="booking-doc-img">
+{% if user.user_profile.proPic %}
+<img src="/media/{{user.user_profile.proPic}}" width="40px" height="40px" > 
+{% else %}
+<img src="/media/avater.png" width="40px" height="40px" >
+{% endif %}
+</a>
+
+<div class="profile-det-info">
+<h3>@{{user.username}}</h3>
+<h4>{{user.first_name}} {{user.last_name}}</h4>
+
+<div class="patient-details">
+<h5><i class="fas fa-birthday-cake"></i>Age {{user.patient_info.date_of_birth|timesince}} </h5>
+<h5 ><i class="fa fa-heartbeat"></i>Blood Group {{user.patient_info.blood_group}}</h5>
+<h5><i class="fas fa-weight"></i>Weight {{user.patient_info.weight}}</h5>
+<h5 ><i class="fas fa-weight"></i>Height {{user.patient_info.height}}</h5>
+<h5><i class="fas fa-neuter"></i>Gender {{user.patient_info.Gender}}</h5>
+<h5><i class="fa fa-phone"></i> {{user.patient_info.contuct_no}}</h5>
+<h5><i class="fa fa-envelope"></i> {{user.email}}</h5>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+<div>
+<div class="card dash-cards">
+<div class="card-header">
+<div class="today-appointment-title">
+<h5 class="mb-0">Search donors for blood</h5>
+<a href="#"><h6 class="mb-0">View All <i class="feather-arrow-right"></i></h6></a>
+</div>
+</div>
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-hover table-center mb-0">
+    
+        <form class="form-control datetimepicker" method="GET">
+        <div class="input-group">
+        <input type="text" class="form-control" name="Search" placeholder="Search by user name">
+        &nbsp 
+        <div class="input-group-btn">
+        <button class="btn btn-success btn-lg" type="submit">Search</button>
+        </div>
+        </div>
+        </form>
+
+
+<div>
+{% if Search %}    
+{% for result in results %}
+<div class="card">
+<div class="card-body">
+<div class="doctor-widget">
+<div class="doc-info-left">
+
+<div class="doctor-img">
+<a href="{% url 'Accountapp:view_all_profile' username=result.username %}">
+{% if result.user_profile.proPic %}
+<img src="/media/{{result.user_profile.proPic}}" width="60px" height="60px" > 
+{% else %}
+<img src="/media/avater.png" width="100px" height="100px" >
+{% endif %}
+</a>
+</div>
+
+<div class="doc-info-cont">
+<h4 class="doc-name"><a href="#">{{result.username}}</a></h4>
+<p class="doc-speciality">{{result.first_name}} {{result.lastst_name}}</p>
+
+{% if result.is_patient %}
+<h5 class="doc-department">Patient</h5>
+{% elif result.is_doctor %}
+<h5 class="doc-department">Doctor</h5>
+{% else %}
+<h5 class="doc-department">Service holder</h5>
+{% endif %}
+
+
+</div>
+</div>
+<div class="doc-info-right">
+<div class="clini-infos">
+
+</div>
+<div class="clinic-booking">
+<a class="view-pro-btn" href="{% url 'Accountapp:view_all_profile' username=result.username %}">View Profile</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %} 
+{% endif %}          
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="dashboard-widget">
+<nav class="dashboard-menu">
+<ul>
+<li class="active">
+{% if not blood_request %}
+<a href="#">
+<i class="fas fa-columns"></i>
+<span>You have no request</span>
+
+</a>
+{% else %}
+<a href="#">
+
+<i class="fas fa-columns"></i>
+<span>Please accept or reject request</span>
+</a>
+<form method="POST">
+
+    {{form|crispy}}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-sm submit-btn">Select & submit</button>
+    
+
+</form>
+<br/><br/>
+{% endif %}
+</li>
+<li>
+{% if user.user_profile.proPic %}
+<a href="{% url 'Accountapp:ProPicChange' %}">
+<i class="fas fa-bookmark"></i>
+<span>Change Profile picture</span>
+</a>
+{% else %}
+<a href="{% url 'Accountapp:AddProPic' %}">
+<i class="fas fa-bookmark"></i>
+<span>Upload Profile picture</span>
+</a>
+{% endif %}
+</li>
+
+<li>
+<a href="{% url 'blog_app:my_blog' %}">
+<i class="fas fa-bookmark"></i>
+<span>My Blogs</span>
+</a>
+</li>
+
+<li>
+<a href="#">
+<i class="fas fa-comments"></i>
+<span>Message</span>
+<small class="unread-msg">23</small>
+</a>
+</li>
+<li>
+<a href="#">
+<i class="fas fa-share-alt"></i>
+<span>Groups</span>
+</a>
+</li>
+
+<li>
+<a href="#">
+<i class="fas fa-list-alt"></i>
+<span>Orders</span>
+<small class="unread-msg">7</small>
+</a>
+</li>
+<li>
+<a href="{% url 'blog_app:CreateBlog' %}">
+<i class="fas fa-file-invoice"></i>
+<span>Create blogs</span>
+</a>
+</li>
+<li>
+<a href="#">
+<i class="fas fa-star"></i>
+<span>Reviews</span>
+</a>
+</li>
+<li>
+<a href="{% url 'Accountapp:patient_edit_pro' %}">
+<i class="fas fa-user-cog"></i>
+<span>Profile Settings</span>
+</a>
+</li>
+<li>
+<a href="{% url 'Accountapp:ChangePasss' %}">
+<i class="fas fa-lock"></i>
+<span>Change Password</span>
+</a>
+</li>
+<li>
+<a href="{% url 'Accountapp:sign_out' %}">
+<i class="fas fa-sign-out-alt"></i>
+<span>Logout</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

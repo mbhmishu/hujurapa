@@ -1,0 +1,30 @@
+<!doctype html>
+{% extends 'Profile/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+
+
+
+
+
+<div class="col-lg-12">
+<div class="onboarding-content passcode-wrap mail-box">
+<div class="onboarding-contents">
+<div class="row">
+
+
+
+<form class="form-horizontal" method="POST"  style="padding-top:50px">
+    {{form|crispy}}
+    {% csrf_token %}
+    <br>
+    <button type="submit"  class="btn btn-success btn-sm">Upload</button>
+</form>
+
+</div>
+</div>
+</div>
+
+{% endblock %}

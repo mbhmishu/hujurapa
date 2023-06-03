@@ -1,0 +1,35 @@
+<!doctype html>
+{% extends 'Profile/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body_block %}
+<div class="col-lg-12">
+<div class="onboarding-content passcode-wrap mail-box">
+<div class="onboarding-contents">
+    
+<div class="row" style="padding-top:20px">
+    <h3>Creat your blog</h3>
+    <br>
+    <br>
+    <form method="POST" enctype="multipart/form-data" >
+
+        {{form|crispy}}
+        {% csrf_token %}
+        <br>
+        <div class="submit-section submit-btn-bottom">
+            <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+        </div>
+    </form>
+    
+    
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

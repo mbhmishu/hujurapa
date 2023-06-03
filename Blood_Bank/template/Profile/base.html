@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+ 
+<head>
+<meta charset="utf-8">
+<title>Blood bank</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<link rel="stylesheet" href="{% static '' %}assets/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="{% static '' %}assets/plugins/fontawesome/css/all.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/feather.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/plugins/select2/css/select2.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/owl.carousel.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/plugins/apex/apexcharts.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/style.css">
+
+</head>
+
+<body>
+
+<div class="main-wrapper">
+
+<header class="header">
+<nav class="navbar navbar-expand-lg header-nav">
+<div class="navbar-header">
+<a href="#" class="navbar-brand logo">
+<img src="{% static '' %}assets/img2/icon1.jpg" class="img-fluid" alt="Logo">
+</a>
+</div>
+
+<ul class="nav header-navbar-rht">
+<li class="nav-item dropdown has-arrow logged-item">
+<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+<span class="user-img">
+    {% if user.user_profile.proPic %}
+    <img src="/media/{{user.user_profile.proPic}}"  class="rounded-circle" width="41"> 
+    {% else %}
+    <img src="/media/avater.png" class="rounded-circle" width="31" >
+    {% endif %}
+</span>
+</a>
+<div class="dropdown-menu dropdown-menu-end">
+<div class="user-header">
+<div class="avatar avatar-sm">
+    {% if user.user_profile.proPic %}
+    <img src="/media/{{user.user_profile.proPic}}" class="rounded-circle" width="31" > 
+    {% else %}
+    <img src="/media/avater.png" class="rounded-circle" width="31" >
+    {% endif %}
+</div>
+<div class="user-text">
+<h6>@{{user.username}}</h6>
+
+</div>
+</div>
+<a class="dropdown-item" href="{% url 'Accountapp:view_all_profile' username=user.username %}">My Dashboard</a>
+<a class="dropdown-item" href="{% url 'Accountapp:search' %}">Search page</a>
+<a class="dropdown-item" href="{% url 'Accountapp:index' %}">Home page</a>
+<a class="dropdown-item" href="{% url 'blog_app:blog_list' %}">Blogs</a>
+<a class="dropdown-item" href="{% url 'Accountapp:sign_out' %}">Logout</a>
+</div>
+</li>
+
+</ul>
+</nav>
+</header>
+
+
+{% block body_block %}
+
+
+{% endblock %}
+
+
+
+
+
+<section class="home-fifteen-footer">
+    <div class="container">
+        
+    </div>
+</section>
+
+
+<script data-cfasync="false" src="{% static '' %}assets/js/email-decode.min.js"></script><script src="{% static '' %}assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="{% static '' %}assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static '' %}assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+<script src="{% static '' %}assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+<script src="{% static '' %}assets/js/circle-progress.min.js"></script>
+
+<script src="{% static '' %}assets/js/feather.min.js"></script>
+
+<script src="{% static '' %}assets/plugins/select2/js/select2.min.js"></script>
+
+<script src="{% static '' %}assets/js/owl.carousel.min.js"></script>
+
+<script src="{% static '' %}assets/plugins/apex/apexcharts.min.js"></script>
+
+<script src="{% static '' %}assets/plugins/apex/chart-data.js"></script>
+
+<script src="{% static '' %}assets/js/script.js"></script>
+
+</body>
+
+
+</html>

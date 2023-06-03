@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+ {% extends 'Profile/base.html' %}
+ {% load crispy_forms_tags %}
+ {% block body_block %}
+
+
+
+<div class="content pharmacy-cart-content">
+<div class="container">
+
+<div class="card pharmacy-card">
+<div class="card-body">
+<div class="doctor-widget pharmacy-widget">
+<div class="doc-info-left">
+<div class="doctor-img1">
+
+    {% if result_user.user_profile.proPic %}
+    <a class="nav-link" href="#"><img src="/media/{{result_user.user_profile.proPic}}" width="150px" height="150px" class="rounded-circle"> </a>
+    {% else %}
+    <a  href="#"><img src="/media/avater.png" width="150px" height="150px" class="rounded-circle"></a>
+    {% endif %}
+
+</div>
+
+{% if result_user.is_Org %}
+
+<div class="doc-info-cont">
+    <br><br>
+<h4 class="doc-name"><b><a href="pharmacy-details.html">@{{result_user.username}}</a></b></h4>
+<div class="rating">
+
+<span class="d-inline-block average-rating">{{result_user.first_name}} {{result_user.last_name}}</span>
+</div>
+<div class="clinic-details">
+<div class="clini-infos">
+<p class="doc-location">
+<i class="feather-map-pin"></i> {{result_user.org_info.address}} {{result_user.pharmeci_info.address}} 
+</p>
+<p class="doc-location text-ellipse">
+<i class="feather-tag"></i> {{result_user.org_info.services}} {{result_user.pharmeci_info.services}}
+</p>
+<p class="doc-education text-ellipse">
+<i class=""></i>Regi No: {{result_user.org_info.RegiNo}} {{result_user.pharmeci_info.RegiNo}}
+</p>
+<p class="doc-education text-ellipse">
+<i class=""></i>Type: {{result_user.org_info.org_type}} {{result_user.pharmeci_info.org_type}}
+</p>
+</div>
+</div>
+<div class="pharmacy-social-links">
+<ul class="nav">
+<li>
+<a href="{{result_user.org_info.fb}}{{result_user.pharmeci_info.fb}}" target="_blank">
+<i class="fab fa-facebook"></i>
+</a>    
+</li>
+<li>
+<a href="{{result_user.org_info.tw}} {{result_user.pharmeci_info.tw}}" target="_blank">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="{{result_user.org_info.instra}}{{result_user.pharmeci_info.instra}}" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+</li>
+</ul>
+
+<br><br>
+
+</div>
+</div>
+</div>
+
+
+<div class="doc-info-right d-flex align-items-center justify-content-center">
+<div class="pharmacy-booking pharmacy-booking-right">
+<a class="btn view-details-btn" href="#">
+<i class="feather-message-square"></i>View website
+</a>
+<a class="btn browse-products-btn" href="#" data-bs-toggle="modal" data-bs-target="#voice_call">
+<i class="feather-phone-call"></i>{{result_user.org_info.phone_no}}  {{result_user.pharmeci_info.phone_no}}
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="pharmacy-details-info">
+
+<div class="product-description-tabs">
+<ul class="nav nav-tabs">
+<li class="nav-item">
+<a class="nav-link description-link active" href="#about_store" data-bs-toggle="tab">About me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#pharmacy_locations" data-bs-toggle="tab">Locations</a>
+</li>
+<li class="nav-item">
+<a class="nav-link reviews-link" href="#pharmacy_reviews" data-bs-toggle="tab">Reviews {{result_user.review_receiver.count}}</a>
+</li>
+</ul>
+</div>
+
+
+<div class="tab-content pt-0">
+
+<div role="tabpanel" id="about_store" class="tab-pane fade show active">
+<div class="row">
+<div class="col-md-12">
+
+<div class="widget about-widget">
+<h4 class="widget-title">{{result_user.first_name}} {{result_user.last_name}}</h4>
+<p>{{result_user.org_info.bio}}  </p>
+</div>
+</div>
+</div>
+</div>
+
+{% else %}
+
+
+<div class="doc-info-cont">
+    <br><br>
+<h4 class="doc-name"><b><a href="pharmacy-details.html">@{{result_user.username}}</a></b></h4>
+<div class="rating">
+
+<span class="d-inline-block average-rating">{{result_user.first_name}} {{result_user.last_name}}</span>
+</div>
+<div class="clinic-details">
+<div class="clini-infos">
+<div class="patient-details">
+<h5><i class="fas fa-birthday-cake"></i>Age {{result_user.patient_info.date_of_birth|timesince}} </h5>
+<h5 ><i class="fa fa-heartbeat"></i>Blood Group {{result_user.patient_info.blood_group}}</h5>
+<h5><i class="fas fa-weight"></i>Weight {{result_user.patient_info.weight}}</h5>
+<h5 ><i class="fas fa-weight"></i>Height {{result_user.patient_info.height}}</h5>
+<h5><i class="fas fa-neuter"></i>Gender {{result_user.patient_info.Gender}}</h5>
+<h5><i class="fa fa-phone"></i> {{result_user.patient_info.phone_no}}</h5>
+<h5><i class="fa fa-envelope"></i> {{result_user.email}}</h5>
+
+</div>
+</div>
+</div>
+<div class="pharmacy-social-links">
+<ul class="nav">
+<li>
+<a href="{{result_user.patient_info.fb}}" target="_blank">
+<i class="fab fa-facebook"></i>
+</a>    
+</li>
+<li>
+<a href="{{result_user.patient_info.tw}}" target="_blank">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="{{result_user.patient_info.instra}}" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+</li>
+</ul>
+
+<br><br>
+
+</div>
+</div>
+</div>
+
+
+<div class="doc-info-right d-flex align-items-center justify-content-center">
+<div class="pharmacy-booking pharmacy-booking-right">
+<a class="btn view-details-btn" href="#">
+<i class="feather-message-square"></i>View website
+</a>
+
+{% if not donor_request %}
+<a class="btn browse-products-btn" href="{% url 'Accountapp:send_donor_request' username=result_user.username %}" >
+Blood request
+</a>
+ 
+{% else %}
+<a class="btn browse-products-btn" href="#" data-bs-toggle="modal" data-bs-target="#voice_call">
+ Pending
+</a>
+{% endif%}
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="pharmacy-details-info">
+
+<div class="product-description-tabs">
+<ul class="nav nav-tabs">
+<li class="nav-item">
+<a class="nav-link description-link active" href="#about_store" data-bs-toggle="tab">About me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#pharmacy_locations" data-bs-toggle="tab">Locations</a>
+</li>
+<li class="nav-item">
+<a class="nav-link reviews-link" href="#pharmacy_reviews" data-bs-toggle="tab">Reviews {{result_user.review_receiver.count}}</a>
+</li>
+</ul>
+</div>
+
+
+<div class="tab-content pt-0">
+
+<div role="tabpanel" id="about_store" class="tab-pane fade show active">
+<div class="row">
+<div class="col-md-12">
+
+<div class="widget about-widget">
+<h4 class="widget-title">{{result_user.first_name}} {{result_user.last_name}}</h4>
+<p>{{result_user.patient_info.bio}} </p>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
+<div role="tabpanel" id="pharmacy_locations" class="tab-pane fade">
+
+<div class="card pharmacy-card">
+<div class="card-body">
+<div class="doctor-widget pharmacy-widget">
+<div class="doc-info-left">
+<div class="doctor-img1">
+<a href="pharmacy-details.html">
+<img src="assets/img/pharmacy/pharmacy-02.jpg" class="img-fluid" alt="">
+</a>
+<div class="pharmacy-pro-tags">
+<span class="pharmacy-closed">Pres. Address</span>
+</div>
+</div>
+<div class="doc-info-cont">
+<h4 class="doc-name">{{result_user.org_info.address}} {{result_user.pharmeci_info.address}}</h4>
+
+<div class="clinic-details">
+<div class="clini-infos">
+<p class="doc-location">
+<i class="feather-map-pin"></i> {{result_user.org_info.pres_address}} {{result_user.patient_info.pres_address}}
+
+</p>
+<p class="doc-location text-ellipse">
+<i class="feather-tag"></i> {{result_user.org_info.pres_address}} {{result_user.patient_info.pres_address}}
+
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="card pharmacy-card">
+<div class="card-body">
+<div class="doctor-widget pharmacy-widget">
+<div class="doc-info-left">
+<div class="doctor-img1">
+<a href="pharmacy-details.html">
+<img src="assets/img/pharmacy/pharmacy-03.jpg" class="img-fluid" alt="">
+</a>
+<div class="pharmacy-pro-tags">
+<span class="pharmacy-opened">perm. address</span>
+</div>
+</div>
+<div class="doc-info-cont">
+<h4 class="doc-name"><a href="pharmacy-details.html">permanent address</a></h4>
+<div class="clinic-details">
+<div class="clini-infos">
+<p class="doc-location">
+<i class="feather-map-pin"></i> {{result_user.org_info.pres_address}} {{result_user.patient_info.pres_address}}
+
+</p>
+<p class="doc-location text-ellipse">
+<i class="feather-tag"></i> {{result_user.org_info.pres_address}} {{result_user.patient_info.pres_address}}
+
+</p>
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div role="tabpanel" id="pharmacy_reviews" class="tab-pane fade">
+
+<div class="widget review-listing mt-0">
+<div class="pharmacy-review-box">
+<div class="row align-items-center">
+
+
+
+
+
+<div class="pharmacy-comments-list">
+
+
+
+
+<div class="widget review-listing">
+<ul class="comments-list">
+{% for revi in result_user.review_receiver.all %}
+<li>
+<div class="comment">
+    {% if revi.giver.user_profile.proPic %}
+    <a class="nav-link" href="#"><img src="/media/{{revi.giver.user_profile.proPic}}" width="50px" height="50px" class="rounded-circle"> </a>
+    {% else %}
+    <a  href="#"><img src="/media/avater.png" width="50px" height="50px" class="rounded-circle"></a>
+    {% endif %}
+<div class="comment-body">
+<div class="meta-data">
+<span class="comment-author">{{revi.giver}}</span>
+<span class="comment-date">{{revi.review_date}}</span>
+
+</div>
+
+<p class="comment-content">
+{{revi.review}}
+</p>
+</div>
+</div>
+
+</li>
+{% endfor %}
+</ul>
+
+
+<div class="all-feedback text-center">
+<a href="#" class="btn btn-primary btn-sm">
+Show all feedback <strong></strong>
+</a>
+</div>
+
+</div>
+
+
+<div class="write-review">
+<h4>Write a review for <strong>{{result_user.first_name}} <strong> {{result_user.last_name}}</strong></h4>
+
+<form method="POST">
+<div class="form-group">
+    {{review_form|crispy}}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary submit-btn">Add Review</button>
+    
+</div>
+</form>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}

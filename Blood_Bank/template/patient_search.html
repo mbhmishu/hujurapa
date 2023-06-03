@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+{% extends 'Profile/base.html' %}
+{% load static %}
+
+
+
+
+{% block body_block %}
+
+
+
+
+
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+<div class="card search-filter">
+<div class="card-header">
+<h4 class="card-title mb-0">Search from all user by username</h4>
+</div>
+<div class="card-body">
+<div class="filter-widget">
+<div>
+<form class="form-control datetimepicker" method="GET">
+<div class="input-group">
+<input type="text" class="form-control" name="Search" placeholder="Search by user name">
+&nbsp 
+<div class="input-group-btn">
+<button class="btn btn-success btn-lg" type="submit">Search</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="filter-widget">
+<h4>Gender</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="gender_type" checked>
+<span class="checkmark"></span> Male Doctor
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="gender_type">
+<span class="checkmark"></span> Female Doctor
+</label>
+</div>
+</div>
+<div class="filter-widget">
+<h4>Select Specialist</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist" checked>
+<span class="checkmark"></span> Urology
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist" checked>
+<span class="checkmark"></span> Neurology
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist">
+<span class="checkmark"></span> Dentist
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist">
+<span class="checkmark"></span> Orthopedic
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist">
+<span class="checkmark"></span> Cardiologist
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist">
+<span class="checkmark"></span> Cardiologist
+</label>
+</div>
+</div>
+<div class="btn-search">
+<button type="button" class="btn w-100">Search</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="col-md-12 col-lg-8 col-xl-9">
+{% if Search %}    
+{% for result in results %}
+<div class="card">
+<div class="card-body">
+<div class="doctor-widget">
+<div class="doc-info-left">
+
+<div class="doctor-img">
+<a href="{% url 'Accountapp:view_profile' username=result.username %}">
+{% if result.user_profile.proPic %}
+<img src="/media/{{result.user_profile.proPic}}" width="60px" height="60px" > 
+{% else %}
+<img src="/media/user_profile_pic/avater.png" width="100px" height="100px" >
+{% endif %}
+</a>
+</div>
+
+<div class="doc-info-cont">
+<h4 class="doc-name"><a href="doctor-profile.html">{{result.username}}</a></h4>
+<p class="doc-speciality">MDS - Periodontology and Oral Implantology, BDS</p>
+<h5 class="doc-department">Dentist</h5>
+<div class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star"></i>
+<span class="d-inline-block average-rating">(17)</span>
+</div>
+<div class="clinic-details">
+<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Florida, USA</p>
+
+</div>
+<div class="clinic-services">
+<span>Dental Fillings</span>
+<span> Whitneing</span>
+</div>
+</div>
+</div>
+<div class="doc-info-right">
+<div class="clini-infos">
+<ul>
+<li><i class="far fa-thumbs-up"></i> 98%</li>
+<li><i class="far fa-comment"></i> 17 Feedback</li>
+<li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
+<li><i class="far fa-money-bill-alt"></i> $300 - $1000 <i class="fas fa-info-circle" data-bs-toggle="tooltip" title="Lorem Ipsum"></i> </li>
+</ul>
+</div>
+<div class="clinic-booking">
+<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+<a class="apt-btn" href="booking.html">Book Appointment</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+{% for user_list in user_list %}
+<div class="card">
+<div class="card-body">
+<div class="doctor-widget">
+<div class="doc-info-left">
+<div class="doctor-img">
+<a href="doctor-profile.html">
+<img src="assets/img/doctors/doctor-thumb-02.jpg" class="img-fluid" alt="User Image">
+</a>
+</div>
+<div class="doc-info-cont">
+<h4 class="doc-name"><a href="doctor-profile.html">{{user_list.username}}</a></h4>
+<p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+<h5 class="doc-department"><img src="assets/img/specialities/specialities-05.png" class="img-fluid" alt="Speciality">Dentist</h5>
+<div class="rating">
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star"></i>
+<span class="d-inline-block average-rating">(35)</span>
+</div>
+<div class="clinic-details">
+<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+<ul class="clinic-gallery">
+<li>
+<a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+<img src="assets/img/features/feature-01.jpg" alt="Feature">
+</a>
+</li>
+<li>
+<a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+<img src="assets/img/features/feature-02.jpg" alt="Feature">
+</a>
+</li>
+<li>
+<a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+<img src="assets/img/features/feature-03.jpg" alt="Feature">
+</a>
+</li>
+<li>
+<a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+<img src="assets/img/features/feature-04.jpg" alt="Feature">
+</a>
+</li>
+</ul>
+</div>
+<div class="clinic-services">
+<span>Dental Fillings</span>
+<span> Whitneing</span>
+</div>
+</div>
+</div>
+<div class="doc-info-right">
+<div class="clini-infos">
+<ul>
+<li><i class="far fa-thumbs-up"></i> 100%</li>
+<li><i class="far fa-comment"></i> 35 Feedback</li>
+<li><i class="fas fa-map-marker-alt"></i> Newyork, USA</li>
+<li><i class="far fa-money-bill-alt"></i> $50 - $300 <i class="fas fa-info-circle" data-bs-toggle="tooltip" title="Lorem Ipsum"></i></li>
+</ul>
+</div>
+<div class="clinic-booking">
+<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
+<a class="apt-btn" href="booking.html">Book Appointment</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endif %}
+
+
+<div class="load-more text-center">
+<a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

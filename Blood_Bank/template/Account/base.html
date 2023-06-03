@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<title>Blood bank</title>
+
+<link rel="stylesheet" href="{% static '' %}assets/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="{% static '' %}assets/plugins/fontawesome/css/all.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/feather.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/owl.carousel.min.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/aos.css">
+
+<link rel="stylesheet" href="{% static '' %}assets/css/style.css">
+</head>
+
+<body class="home-fifteen">
+
+<div class="main-wrapper">
+
+<header class="header">
+<div class="container">
+<div class="nav-bg-fifteen">
+<nav class="navbar navbar-expand-lg header-nav nav-transparent">
+<div class="navbar-header">
+<a id="mobile_btn" href="javascript:void(0);"> <span class="bar-icon">
+<span></span>
+<span></span>
+<span></span>
+</span>
+</a>
+<a href="index.html" class="navbar-brand logo">
+<img src="{% static '' %}assets/img2/icon1.jpg" class="img-fluid" alt="Logo" >
+</a>
+</div>
+<div class="main-menu-wrapper">
+<div class="menu-header">
+<a href="index.html" class="menu-logo">
+<img src="{% static '' %}assets/img2/icon1.jpg" class="img-fluid" alt="Logo">
+</a>
+<a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i>
+</a>
+</div>
+<ul class="main-nav black-font">
+<li class="has-submenu menu-effect active"> <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+<ul class="submenu">
+{% if user.is_authenticated%}
+<li><a href="{% url 'Accountapp:view_all_profile' username=user.username %}">My Dashboard</a></li>
+<li><a href="{% url 'Accountapp:search' %}">Search page</a></li>
+<li> <a href="{% url 'Accountapp:sign_out' %}">Logout</a>
+{% endif %}
+</ul>
+</li>
+<li> <a href="#">Blogs</a>
+</li>
+
+</li>
+</ul>
+</div>
+<ul class="nav header-navbar-rht">
+<li class="nav-item">
+<a class="nav-link btn-five btn-fifteen" href="{% url 'Accountapp:sign_in'%}">Sign In</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn-five-light btn-fifteen-light" href="{% url 'Accountapp:regi_type'%}">Sign Up</a>
+</li>
+</ul>
+
+
+    
+</nav>
+</div>
+</div>
+</header>
+
+{% block body_block %}
+
+<section class="home-section-fifteen">
+<div class="container">
+<div class="row ">
+<div class="col-lg-6">
+<div class="home-fifteen-banner aos" data-aos="fade-up">
+<img src="{% static '' %}assets/img2/bloodbg.jpg" alt="">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="title-block aos" data-aos="fade-up" data-aos-delay="100">
+<h2>রক্ত দিন, জীবন বাঁচান</h2>
+<h2>রক্তদানের উপকারিতা</h2>
+<p>
+    ♦ রক্তদানের মাধ্যমে আপনি অন্যের জীবন বাঁচাতে ভূমিকা রাখতে পারেন। <br/>
+    ♦ গবেষণা বলছে, নিয়মিত রক্তদানের ফলে কিছু ক্যান্সারের ঝুঁকি কমে।<br/>
+    ♦ বছরে তিনবার রক্ত দিলে অস্থিমজ্জার রক্তকণিকা উৎপাদনব্যবস্থা আরো সক্রিয় হয় এবং নতুন লোহিত রক্তকণিকা তৈরির হার বাড়ে। <br/>
+    ♦ যাঁদের রক্তে আয়রন জমার প্রবণতা আছে, রক্তদান তাঁদের জন্য ভালো।<br/>
+    ♦ রক্ত দিলে কোলেস্টেরলের মাত্রা কমে, কখনো রক্তচাপও নিয়ন্ত্রিত হয়। ফলে হৃদরোগ ও হার্ট অ্যাটাকের ঝুঁকি অনেকটাই কমে যায়।<br/>
+    ♦ দেহে হেপাটাইটিস বি, সি, এইচআইভি, সিফিলিস, ম্যালেরিয়ার জীবাণু আছে কি না রক্তদান উপলক্ষে বিনা খরচে অনেকেরই তা জানা হয়ে যায়।<br/>
+    ♦ রক্ত দিলে যে ক্যালরি খরচ হয়, তা ওজন কমানোর ক্ষেত্রে এবং রক্তচাপ নিয়ন্ত্রণে গুরুত্বপূর্ণ ভূমিকা রাখে।<br/>
+    
+</p>
+</div>
+
+</section>
+
+
+
+<section class="gallery-tab-section aos" data-aos="fade-up">
+<div class="water-mark-icons">
+<img src="{% static '' %}assets/img/poour-doctor-watermark-2.png" alt="">
+<img src="{% static '' %}assets/img/our-doctor-watermark.png" alt="">
+<img src="{% static '' %}assets/img/rotate-bg.png" alt="">
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="home-fifteen-section-title text-center">
+<h2>Bangladesh <span>health organizations</span></h2>
+</div>
+</div>
+<div class="col-lg-12">
+<div class="button-group filters-button-group">
+<button class="button is-checked" data-filter="*">All</button>
+<button class="button" data-filter=".neurology">Neurology</button>
+<button class="button" data-filter=".orthopedic">Orthopedic</button>
+<button class="button" data-filter=".cardiologist">Cardiologist</button>
+<button class="button" data-filter=".dentist">Dentist</button>
+<button class="button" data-filter=".urology">Urology</button>
+</div>
+<div id="grid-container" class="transitions-enabled fluid masonry js-masonry grid">
+<article class="neurology urology sea over-box">
+<a href="https://dghs.gov.bd/">
+<img src="{% static '' %}assets/img2/helthministry.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>স্বাস্থ্য অধিদপ্তর</h6>
+<p>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+</div>
+<i class="feather-link"> </i>
+</div>
+</div>
+</a>
+
+</article>
+<article class="neurology orthopedic over-box">
+    <a href="http://dgda.portal.gov.bd/forms/form/portal/-">
+<img src="{% static '' %}assets/img/gallery-tab-img-2.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>নকল ঔষুধ সংক্রান্ত অভিযোগ </h6> 
+<p>ঔষধ প্রশাসন অধিদপ্তর</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+</a>
+
+
+<article class="sea over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-3.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+<article class="neurology urology rock sea over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-4.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+<article class="neurology sea over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-5.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+<article class="orthopedic cardiologist over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-6.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+<article class="urology dentist over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-7.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+<article class="sea dentist over-box">
+<img src="{% static '' %}assets/img/gallery-tab-img-8.jpg" class="img-responsive" />
+<div class="gallery-after">
+<div class="gallery-after-content">
+<div class="gallery-hover-text">
+<h6>Blood Pressure</h6>
+<p>Cardiology</p>
+</div>
+<i class="feather-link"></i>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section class="home-fifteen-why-us">
+<div class="water-mark-icons">
+<img src="{% static '' %}assets/img2/why-us-water-mark.png" alt="">
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-6">
+<div class="row">
+<div class="col-lg-12 aos" data-aos="fade-up">
+<div class="home-fifteen-section-title">
+<h2>Why do we come <span> under this system?</span></h2>
+</div>
+</div>
+<div class="col-lg-12">
+<div class="why-us-paragraph aos" data-aos="fade-up" data-aos-delay="200">
+<p>The system that is going to be developed in blood bank management system this is
+    a web based database application system that is to be used by the blood banks or
+    blood centers as a means to advertise the nation wide blood donation events to the
+    public and at the same time allow the public to make online reservation and request
+    for the blood bank. The system keeps the record of all the donors, recipients, blood
+    donation programs and rejected bloods. For internal works and activities intranet is
+    used and for interaction with public internet is used. This system also has the
+    ability to keep track of the donor's donation records and the blood stock in the
+    blood bank. This project intends to computerize the blood and donor management
+    system in a blood bank in order to improve the record management efficiency due
+    to the growing size of records of data.
+    
+</p>
+<p>
+    The main aim of this project is to help the people who need blood
+    in an emergency and to associate some donors who are willing to
+    donate their blood to needy people and save their lives. The user
+    will be able to : Search donors of suitable blood groups and
+    contact them if needed.
+    
+</p>
+<p> In this 21st century, we are living in an information era. Day by day
+    information is increasing in all sectors, but the ability to store them
+    properly and make proper use of that information does not grow. By
+    definition, a Blood bank management system is a system where a store
+    organizer can store all information and manage all parts of a blood
+    donor
+</p>
+</div>
+<div class="why-us-points aos" data-aos="fade-up" data-aos-delay="400">
+<ul>
+<li>Reduce stress</li>
+<li> Improve our emotional well-being</li>
+<li>Benefit our physical health </li>
+<li>Help get rid of negative feelings</li>
+<li>Provide a sense of belonging and reduce isolation.</li>
+<li>Research has found further evidence of the health benefits that come
+    specifically from donating blood.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6 aos" data-aos="fade-up" data-aos-delay="500">
+<div class="why-us-container-img">
+<img src="{% static '' %}assets/img2/icon2.png" alt="">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}
+
+<section class="home-fifteen-footer">
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="home-fifteen-footer-block">
+<div class="foot-title">
+</div>
+<div class="foot-title">
+    <h6>Developer info</h6>
+</div>
+<p>Sumaya Biplob Rony 
+    <br> B.Sc in Software Engineering
+    <br>ID: 183-35-2618 <br> 
+</p>
+<div class="foot-social-icons">
+<a href="#" class="me-3"><i class="feather-facebook"></i></a>
+<a href="#" class="me-3"><i class="feather-instagram"></i></a>
+<a href="#" class="me-3"><i class="feather-linkedin"></i></a>
+<a href="#"><i class="feather-twitter"></i></a>
+</div>
+</div>
+</div>
+
+
+<div class="col-lg-6 col-md-6">
+<div class="home-fifteen-footer-block">
+<div class="foot-title">
+<h6>Supervised by</h6>
+</div>
+<div class="foot-list-address">
+<p>Dr. Fazla Elahi<br> 
+    Assistant Professor & Associate Head<br> 
+    Daffodil International University<br> 
+    
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<hr class="foot-line">
+<div class="row">
+<div class="col-lg-12">
+<div class="foot-copy-rights">
+<p class="mb-0">This project, All rights reserved.</p>
+<div class="foot-terms-policy">
+<a href="#">Sumaya Biplob Rony</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
+<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{% static '' %}assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="{% static '' %}assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static '' %}assets/js/owl.carousel.min.js"></script>
+
+<script src="{% static '' %}assets/js/slick.js"></script>
+
+<script src="{% static '' %}assets/js/feather.min.js"></script>
+
+<script src="{% static '' %}assets/js/aos.js"></script>
+
+<script src="{% static '' %}assets/js/isotope.pkgd.min.js"></script>
+
+<script src="{% static '' %}assets/js/script.js"></script>
+</body>
+
+</html>
