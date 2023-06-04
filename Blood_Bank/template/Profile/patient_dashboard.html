@@ -89,9 +89,8 @@
 <p class="doc-speciality">{{result.first_name}} {{result.lastst_name}}</p>
 
 {% if result.is_patient %}
-<h5 class="doc-department">Patient</h5>
-{% elif result.is_doctor %}
-<h5 class="doc-department">Doctor</h5>
+<h5 class="doc-department"><i class="fa fa-heartbeat"></i>{{result.patient_info.blood_group}}</h5>
+
 {% else %}
 <h5 class="doc-department">Service holder</h5>
 {% endif %}

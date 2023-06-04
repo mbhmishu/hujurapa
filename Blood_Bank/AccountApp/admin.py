@@ -3,17 +3,19 @@ from .models import User, DonerRequest,PatientInfo,UserProPic,OrgInfo
 # Register your models here
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("last_name", "first_name")
+    list_display =  ('username','first_name','last_name', 'password', 'email','is_patient','is_Org')
 
-@admin.register(DonerRequest)
-class DonerRequestAdmin(admin.ModelAdmin):
-    list_display = ("last_name", "first_name")
+
 
 @admin.register(PatientInfo)
 class PatientInfoAdmin(admin.ModelAdmin):
-    list_display = ("last_name", "first_name")
+    list_display = ("user", "date_of_birth", "blood_group", "Gender", "weight", "height","phone_no","locations","website","fb","tw","instra","pres_address","parmanent_address","bio")
 
 
-@admin.register(OrgInfo)
-class OrgInfoAdmin(admin.ModelAdmin):
-    list_display = ("last_name", "first_name")
+
+admin.site.register(OrgInfo)
+
+admin.site.register(UserProPic)
+
+
+

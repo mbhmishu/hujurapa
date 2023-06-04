@@ -151,13 +151,14 @@ def patient_dashboard(request):
                 donet.delete()
                 return HttpResponseRedirect(reverse('Accountapp:patient_dashboard'))
             return HttpResponseRedirect(reverse('Accountapp:patient_dashboard'))
+    if request.method == "GET":
+        Search = request.GET.get('Search', '')
+        results = User.objects.filter(username__icontains=Search)[0:1]
         
-    
-    return render(request, 'Profile/patient_dashboard.html', context={'blood_request': blood_request,'form':form})
+    return render(request, 'Profile/patient_dashboard.html', context={'blood_request': blood_request,'form':form,'results':results,'Search':Search})
 
 
-
-
+@login_required
 def ORG_dashboard(request):
     if request.method == "GET":
         Search = request.GET.get('Search', '')

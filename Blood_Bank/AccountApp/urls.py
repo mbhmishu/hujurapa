@@ -19,7 +19,7 @@ urlpatterns = [
     path('ChangeUser/', views.ChangeUser, name='ChangeUser'),
     path('AddProPic/', views.AddProPic, name='AddProPic'),
     path('ProPicChange/', views.ProPicChange, name='ProPicChange'),
-    path('hospital_regi/', views.org_regi, name='hospital_regi'),#OrgRegistration patient_dashboard
+    path('hospital_regi/', views.org_regi, name='hospital_regi'),#Org Registration 
 
     path('ORG_dashboard/', views.ORG_dashboard, name='ORG_dashboard'),
     path('ORG_edit_pro/', views.ORG_edit_pro, name='ORG_edit_pro'),
